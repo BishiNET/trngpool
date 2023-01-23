@@ -23,9 +23,11 @@ type Rand struct {
 // New initialize a TRNG pool.
 // Fill your Random.org API Key here.
 func New(apikey string) *Rand {
-	return &Rand{
+	r := &Rand{
 		key: apikey,
 	}
+	r.Refresh()
+	return r
 }
 
 func (r *Rand) refreshByGo() {
